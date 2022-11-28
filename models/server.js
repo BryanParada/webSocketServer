@@ -4,8 +4,12 @@ var cors = require('cors');
 class Server{
 
     constructor(){
-        this.app = express();
-        this.port = process.env.PORT;
+        //manejaremos con "THIS" como propiedad de la clase
+        this.app    = express();
+        this.port   = process.env.PORT;
+        //SOCKET IO
+        this.server = require('http').createServer(this.app);
+        this.io     = require('socket.io')(this.server);
 
         this.paths = { 
 
@@ -35,7 +39,7 @@ class Server{
     }
 
     listen(){
-        this.app.listen(this.port, () =>{
+        this.server.listen(this.port, () =>{
             console.log('Server running on port: ', this.port);
             
         } )
