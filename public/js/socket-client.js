@@ -1,1 +1,3 @@
-console.log('Hello world socket');
+
+//socket del cliente
+const socket = io();
