@@ -8,17 +8,23 @@ const btnSend    = document.querySelector('#btnSend');
 const socket = io();
 
 socket.on('connect', () =>{ 
-    console.log('Connected'); 
+    //console.log('Connected'); 
 
     lblOffline.style.display = 'none';
     lblOnline.style.display = '';
 });
 
 socket.on('disconnect', () =>{ 
-    console.log('Disconnected from Server');
+    //console.log('Disconnected from Server');
     
     lblOnline.style.display = 'none';
     lblOffline.style.display = '';
+});
+
+//A PESAR DE QUE SE LLAME SEND-MSG, ESTE SERA UN EVENTO DE ESCUCHA AL SERVIDOR
+socket.on('send-msg', (payload) => {
+    console.log(payload);
+    
 });
 
 btnSend.addEventListener('click', () =>{

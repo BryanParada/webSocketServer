@@ -51,9 +51,11 @@ class Server{
                 console.log('Client Disconnected', socket.id);
                 
             })
-
+            //ESCUCHANDO CUANDO CLIENTE LO EMITE
             socket.on('send-msg', (payload) => {
-                console.log(payload);
+                //console.log(payload);
+                //CUANDO EL SERVIDOR DE SOCKETS LO ENVIA
+                this.io.emit('send-msg', payload);
                 
             })
 
