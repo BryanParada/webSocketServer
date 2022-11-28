@@ -52,10 +52,13 @@ class Server{
                 
             })
             //ESCUCHANDO CUANDO CLIENTE LO EMITE
-            socket.on('send-msg', (payload) => {
+            socket.on('send-msg', (payload, callback) => {
                 //console.log(payload);
+
+                const id = 123456;
+                callback({ id, date: new Date().getTime() });
                 //CUANDO EL SERVIDOR DE SOCKETS LO ENVIA
-                this.io.emit('send-msg', payload);
+                //this.io.emit('send-msg', payload);
                 
             })
 
